@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Col, Card, Button, Spinner } from "react-bootstrap";
+import { Col, Card, Button, Spinner, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const CityCard = (props) => {
   const [meteo, setMeteo] = useState(null);
@@ -8,7 +9,7 @@ const CityCard = (props) => {
     const apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=";
     const apiKey = "8422402238925bc8745d76bf077fb58f";
 
-    fetch(`${apiUrl}${props.city},IT&appid=${apiKey}&units=metric`)
+    fetch(`${apiUrl}${props.city}&appid=${apiKey}&units=metric&lang=it`)
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -18,6 +19,7 @@ const CityCard = (props) => {
       })
       .then((cityResult) => {
         setMeteo(cityResult);
+        console.log(cityResult);
       })
       .catch((error) => {
         console.log(`Eorre di connesasione al server ${error}`);
@@ -31,19 +33,36 @@ const CityCard = (props) => {
   return (
     <>
       <Col className="d-felx justify-content-center my-3">
-        <Card style={{ width: "18rem" }} className="mx-auto">
+        <Card style={{ width: "18rem" }} className="mx-auto text-center">
           <Card.Body>
-            <Card.Title>{props.city}</Card.Title>
+            <Card.Title>{meteo?.name}</Card.Title>
             <Card.Text>
-              {meteo
-                ? `Temperatura: ${meteo.main.temp}°C - ${meteo.weather[0].description}`
-                : null}
+              {meteo && (
+                <>
+                  Temperatura: {meteo.main.temp}°C
+                  <br />
+                  {meteo.weather[0].description}
+                </>
+              )}
             </Card.Text>
 
             {!meteo && <Spinner animation="border" variant="info" />}
-            <Button variant="primary" onClick={getMeteo}>
-              Aggiorna
-            </Button>
+            <Row xs={1} md={2} className="justify-content-between">
+              <Button
+                variant="primary"
+                onClick={getMeteo}
+                style={{ width: "8rem" }}
+              >
+                Aggiorna
+              </Button>
+              <Link
+                style={{ width: "8rem" }}
+                className="btn btn-warning"
+                to={`/MeteoDetails/${props.city}`}
+              >
+                Dettagli
+              </Link>
+            </Row>
           </Card.Body>
         </Card>
       </Col>

@@ -2,12 +2,19 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import NavBar from "./Components/Navbar";
 import CityContainer from "./Components/CityContainer";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import MeteoDetails from "./Components/MeteoDetails";
 
 function App() {
   return (
     <>
-      <NavBar />
-      <CityContainer />
+      <BrowserRouter>
+        <NavBar />
+        <Routes>
+          <Route path="/Capitali" element={<CityContainer />} />
+          <Route path="/MeteoDetails/:city" element={<MeteoDetails />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
