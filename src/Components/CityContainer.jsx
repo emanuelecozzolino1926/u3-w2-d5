@@ -4,7 +4,7 @@ import CityCard from "./CityCard";
 const CityContainer = () => {
   return (
     <>
-      <Container className="my-3">
+      <Container className="my-3 min-vh-100">
         <h2 className="text-center">Capitali in Europa</h2>
         <Row xs={1} md={2} lg={3} xl={4} className="justify-content-center">
           <CityCard city="Roma,IT" />
