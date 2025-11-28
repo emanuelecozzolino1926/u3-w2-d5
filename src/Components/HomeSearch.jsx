@@ -58,7 +58,9 @@ const HomeSearch = () => {
   return (
     <>
       <InputGroup className="mb-3 position-relative">
-        <InputGroup.Text>Cerca</InputGroup.Text>
+        <InputGroup.Text>
+          <i className="bi bi-search"></i>
+        </InputGroup.Text>
 
         <Form.Control
           value={query}

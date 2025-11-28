@@ -36,37 +36,62 @@ const MeteoDetails = () => {
 
   return (
     <>
-      <Col className="d-felx justify-content-center my-3">
+      <Col className="d-felx justify-content-center my-3 lh-5">
         <Card style={{ width: "22rem" }} className="mx-auto p-3">
           <Card.Body>
-            <Card.Title className="text-center fs-3 fw-bold">
+            <Card.Title className="text-center fs-3 fw-bold my-3">
+              <i className="bi bi-geo-alt-fill"></i>
               {meteo?.city.name}
             </Card.Title>
 
             <div className="text-center">
               {first && (
                 <>
-                  <div>
-                    <strong>Orario:</strong> {first.dt_txt}
+                  <div className="my-2">
+                    <strong>
+                      <i className="bi bi-calendar"></i> Data:
+                    </strong>{" "}
+                    {first.dt_txt}
                   </div>
                   <div>
-                    <strong>Temperatura:</strong> {first.main.temp}°C
+                    <strong>
+                      <i className="bi bi-thermometer-half"></i> Temperatura:
+                    </strong>{" "}
+                    {first.main.temp}°C
                   </div>
                   <div>
-                    <strong>Min:</strong> {first.main.temp_min}°C -{" "}
-                    <strong>Max:</strong> {first.main.temp_max}°C
+                    <strong>
+                      <i className="bi bi-thermometer-snow"></i> Min:
+                    </strong>{" "}
+                    {first.main.temp_min}°C -{" "}
+                    <strong>
+                      <i className="bi bi-thermometer-sun"></i> Max:
+                    </strong>{" "}
+                    {first.main.temp_max}°C
+                  </div>
+                  <div className="my-1">
+                    <strong>
+                      <i className="bi bi-cloud-fill"></i> Meteo:
+                    </strong>{" "}
+                    {first.weather[0].description}
+                  </div>
+                  <div className="my-1">
+                    <strong>
+                      <i className="bi bi-moisture"></i> Umidità:
+                    </strong>{" "}
+                    {first.main.humidity}%
+                  </div>
+                  <div className="my-1">
+                    <strong>
+                      <i className="bi bi-wind"></i> Vento:
+                    </strong>{" "}
+                    {first.wind.speed} km/h
                   </div>
                   <div>
-                    <strong>Meteo:</strong> {first.weather[0].description}
-                  </div>
-                  <div>
-                    <strong>Umidità:</strong> {first.main.humidity}%
-                  </div>
-                  <div>
-                    <strong>Vento:</strong> {first.wind.speed} km/h
-                  </div>
-                  <div>
-                    <strong>Nuvolosità:</strong> {first.clouds.all}%
+                    <strong>
+                      <i className="bi bi-cloud-haze2-fill"></i> Nuvolosità:
+                    </strong>{" "}
+                    {first.clouds.all}%
                   </div>
                 </>
               )}

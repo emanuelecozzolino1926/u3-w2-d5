@@ -35,29 +35,27 @@ const CityCard = (props) => {
       <Col className="d-felx justify-content-center my-3">
         <Card style={{ width: "18rem" }} className="mx-auto text-center">
           <Card.Body>
-            <Card.Title>{meteo?.name}</Card.Title>
+            <Card.Title>
+              <i className="bi bi-geo-alt-fill"></i>
+              {meteo?.name}
+            </Card.Title>
             <Card.Text>
               {meteo && (
                 <>
-                  Temperatura: {meteo.main.temp}°C
+                  <i className="bi bi-thermometer-half"></i> Temperatura:{" "}
+                  {meteo.main.temp}°C
                   <br />
+                  <i className="bi bi-cloud-fill"></i>{" "}
                   {meteo.weather[0].description}
                 </>
               )}
             </Card.Text>
 
             {!meteo && <Spinner animation="border" variant="info" />}
-            <Row xs={1} md={2} className="justify-content-between">
-              <Button
-                variant="primary"
-                onClick={getMeteo}
-                style={{ width: "8rem" }}
-              >
-                Aggiorna
-              </Button>
+            <Row xs={1} md={2}>
               <Link
                 style={{ width: "8rem" }}
-                className="btn btn-warning"
+                className="btn btn-warning m-auto"
                 to={`/MeteoDetails/${props.city}`}
               >
                 Dettagli

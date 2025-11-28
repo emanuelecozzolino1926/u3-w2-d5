@@ -7,7 +7,9 @@ function NavBar() {
   return (
     <Navbar expand="lg" bg="primary" data-bs-theme="dark">
       <Container>
-        <Navbar.Brand href="#home">EpiMeteo</Navbar.Brand>
+        <Navbar.Brand href="#home">
+          <i className="bi bi-cloudy-fill"></i> EpiMeteo
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
